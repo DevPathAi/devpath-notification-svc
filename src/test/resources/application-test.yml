@@ -1,0 +1,7 @@
+devpath:
+  auth:
+    jwt-secret: test-secret-please-change-min-32-bytes-long-0123456789
+spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
