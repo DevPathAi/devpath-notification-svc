@@ -16,6 +16,9 @@ jobs:
           java-version: 21
       - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew build
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   image:
     needs: build
