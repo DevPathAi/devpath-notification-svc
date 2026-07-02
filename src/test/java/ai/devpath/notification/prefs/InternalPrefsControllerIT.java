@@ -2,6 +2,7 @@ package ai.devpath.notification.prefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
@@ -33,6 +34,7 @@ class InternalPrefsControllerIT {
     UserNotificationPrefs row = new UserNotificationPrefs();
     row.setUserId(999002L);
     row.setTimezone("America/New_York");
+    row.setUpdatedAt(Instant.now());
     prefs.save(row);
 
     mvc.perform(get("/notifications/internal/prefs/timezones").param("userIds", "999002"))
