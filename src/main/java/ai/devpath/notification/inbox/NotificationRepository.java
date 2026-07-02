@@ -3,4 +3,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
 	boolean existsByUserIdAndType(Long userId, String type);
 	long countByUserId(Long userId);
+	boolean existsByUserIdAndTypeAndCreatedAtGreaterThanEqual(Long userId, String type, java.time.Instant since);
 }

@@ -1,6 +1,8 @@
 devpath:
   auth:
     jwt-secret: test-secret-please-change-min-32-bytes-long-0123456789
+  reminder:
+    scheduler-enabled: false
 spring:
   flyway:
     enabled: true
