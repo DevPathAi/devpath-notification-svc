@@ -38,8 +38,11 @@ public class UserNotificationPrefs {
 	public String getTimezone() { return timezone; }
 	public void setTimezone(String v) { this.timezone = v; }
 	public String getPreferredTimeSlot() { return preferredTimeSlot; }
+	public void setPreferredTimeSlot(String v) { this.preferredTimeSlot = v; }
 	public Boolean getReminderEnabled() { return reminderEnabled; }
+	public void setReminderEnabled(Boolean v) { this.reminderEnabled = v; }
 	public Boolean getWeeklyReportEmailEnabled() { return weeklyReportEmailEnabled; }
+	public void setWeeklyReportEmailEnabled(Boolean v) { this.weeklyReportEmailEnabled = v; }
 	public Instant getUpdatedAt() { return updatedAt; }
 	public void setUpdatedAt(Instant v) { this.updatedAt = v; }
 }
