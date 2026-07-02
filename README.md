@@ -1,6 +1,6 @@
 # devpath-notification-svc
 
-**DevPath AI** 알림 서비스 — FCM 디바이스 토큰 등록, 인앱 알림 인박스, 알림 설정(timezone·선호시간대), 선호시간대 일일 리마인더. 참여 촉진 배치 중 스트릭·주간 리포트·정체 탐지는 **Build 4+ 목표(TARGET)**이며 아직 구현되지 않았다.
+**DevPath AI** 알림 서비스 — FCM 디바이스 토큰 등록, 인앱 알림 인박스, 알림 설정(timezone·선호시간대), 선호시간대 일일 리마인더. notification-svc의 남은 참여 촉진 기능인 정체 탐지 재참여 푸시(Build 4)·주간 리포트 이메일 발송(Build 5)은 아직 구현되지 않은 후속 **목표(TARGET)**다.
 
 ## 도메인
 
