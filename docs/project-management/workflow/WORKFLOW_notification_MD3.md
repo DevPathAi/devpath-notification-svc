@@ -10,7 +10,8 @@
 - [x] `PushSender` 추상화 + `InboxPushSender`(인앱 inbox 전달; 실제 FCM은 후속) — 완료(PR #6)
 - [x] `PreferredTimeReminderScheduler`(10분 주기 TZ 윈도우 스캔) + `DailyReminderService`(inbox 기반 당일 1회 중복방지) + `@EnableScheduling` — 완료(PR #6)
 - [x] 전체 스위트 `./gradlew build` 28/28 GREEN + 원격 CI green + opus 전체 리뷰 READY(Critical/Important 0)
-### 1.4 정체 탐지·주간 리포트 (Build 4~5, TARGET)
-- [ ] `StagnationConsumer`(`progress.user.stagnated` 구독 → ai-svc `POST /ai/re-engagement` 동기 호출 → 대상 디바이스 푸시) — **Build 4 목표(TARGET)**
-- [ ] `WeeklyReportConsumer`(`progress.report.generated` 구독 → `weekly_report` 저장 → SMTP 이메일 발송 + "리포트 도착" 푸시) — **Build 5 목표(TARGET)**
-- [ ] 실제 FCM 발송(`FcmPushSender implements PushSender`) — **후속**(Firebase 서비스계정 인프라 필요). 추가 시 리마인더 당일-중복방지를 inbox 결합에서 분리 필요
+### 1.4 정체 탐지·주간 리포트 (Build 4·5)
+- [x] `StagnationConsumer`(`progress.user.stagnated` 구독 → ai-svc `POST /ai/re-engagement` 동기 호출·실패 시 폴백 문구 → `PushSender` 전달) — 완료(2026-07-03, PR #7)
+- [x] `WeeklyReportConsumer`(`progress.report.generated` 구독 → `weekly_report` 저장(멱등 UNIQUE) → 설정 시 `EmailSender` + "리포트 도착" 푸시) + `EmailSender`(Mock 기본/Smtp) — 완료(2026-07-03, PR #8)
+- [ ] 실제 FCM 발송(`FcmPushSender implements PushSender`) — **후속**(Firebase 서비스계정 인프라 필요)
+- [ ] 실제 SMTP 발송(`SmtpEmailSender` 실계정·발신도메인·수신자 연동) — **후속(gitops)**
