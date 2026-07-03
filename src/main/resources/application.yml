@@ -23,6 +23,11 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
 
 devpath:
   auth:
@@ -30,6 +35,9 @@ devpath:
   ai-svc:
     base-url: ${AI_SVC_URI:http://localhost:8084}
     timeout: ${AI_SVC_TIMEOUT:PT5S}
+  mail:
+    provider: ${MAIL_PROVIDER:mock}      # mock(기본) | smtp
+    from-address: ${MAIL_FROM:no-reply@devpath.ai}
 
 server:
   port: 8080
