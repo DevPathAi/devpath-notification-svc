@@ -38,6 +38,8 @@ devpath:
   mail:
     provider: ${MAIL_PROVIDER:mock}      # mock(기본) | smtp
     from-address: ${MAIL_FROM:no-reply@devpath.ai}
+  beta:
+    notify-email: ${BETA_NOTIFY_EMAIL:}
 
 server:
   port: 8080
