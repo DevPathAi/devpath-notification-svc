@@ -29,4 +29,14 @@ public class SmtpEmailSender implements EmailSender {
 		// msg.setTo(...) 는 수신자 조회 API(platform-svc) 연동 후속
 		mailSender.send(msg);
 	}
+
+	@Override
+	public void send(String toEmail, String subject, String body) {
+		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setFrom(from);
+		msg.setTo(toEmail);
+		msg.setSubject(subject);
+		msg.setText(body);
+		mailSender.send(msg);
+	}
 }

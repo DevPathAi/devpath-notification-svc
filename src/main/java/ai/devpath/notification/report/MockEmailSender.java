@@ -14,4 +14,9 @@ public class MockEmailSender implements EmailSender {
 	public void send(long userId, String subject, String body) {
 		log.info("[MockEmailSender] userId={} subject={} (실제 발송 안 함)", userId, subject);
 	}
+
+	@Override
+	public void send(String toEmail, String subject, String body) {
+		log.info("[MockEmailSender] to={} subject={} (실제 발송 안 함)", toEmail, subject);
+	}
 }
