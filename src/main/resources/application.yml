@@ -49,3 +49,9 @@ management:
     web:
       exposure:
         include: health, info, metrics
+  health:
+    # 메일 발송은 provider 추상화(mock/smtp)로 처리하므로 JavaMailSender 연결 상태를
+    # 헬스에 반영하지 않는다. SMTP 미구성(mock) 환경에서 overall health가 DOWN(503) 되어
+    # 배포 헬스 감시를 오탐하는 것을 막는다.
+    mail:
+      enabled: false
