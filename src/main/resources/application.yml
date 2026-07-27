@@ -23,10 +23,23 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
 
 devpath:
   auth:
     jwt-secret: ${JWT_SECRET:test-secret-please-change-min-32-bytes-long-0123456789}
+  ai-svc:
+    base-url: ${AI_SVC_URI:http://localhost:8084}
+    timeout: ${AI_SVC_TIMEOUT:PT5S}
+  mail:
+    provider: ${MAIL_PROVIDER:mock}      # mock(기본) | smtp
+    from-address: ${MAIL_FROM:no-reply@devpath.ai}
+  beta:
+    notify-email: ${BETA_NOTIFY_EMAIL:}
 
 server:
   port: 8080
@@ -36,3 +49,9 @@ management:
     web:
       exposure:
         include: health, info, metrics
+  health:
+    # 메일 발송은 provider 추상화(mock/smtp)로 처리하므로 JavaMailSender 연결 상태를
+    # 헬스에 반영하지 않는다. SMTP 미구성(mock) 환경에서 overall health가 DOWN(503) 되어
+    # 배포 헬스 감시를 오탐하는 것을 막는다.
+    mail:
+      enabled: false

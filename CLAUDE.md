@@ -43,7 +43,10 @@
 | 모듈 | 역할 |
 |------|------|
 | device | FCM 디바이스 토큰 등록/해제 |
-| inbox | 인앱 알림(웰컴 등) 저장·조회, `UserRegisteredEvent` 등 구독 |
+| inbox | 인앱 알림(웰컴·리마인더 등) 저장·조회, `UserRegisteredEvent` 등 구독 |
+| prefs | 알림 설정(timezone·선호시간대·리마인더/이메일 on-off): 사용자 대면 `GET/PUT /notifications/prefs/me` + 내부 timezone bulk 조회 |
+| push | 전달 채널 추상화(`PushSender`) — 현재 구현은 인앱 inbox 저장, FCM 발송은 후속 |
+| reminder | 선호시간대 일일 리마인더 스케줄러(TZ 윈도우 스캔, 하루 1회) |
 ## 공통 규칙
 
 - Git: Conventional Commits — [documents/09_Git_규칙_정의서](https://github.com/DevPathAi/documents/blob/main/09_Git_규칙_정의서.md)
